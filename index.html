@@ -245,7 +245,7 @@
       display:flex; align-items:center; gap:14px; margin-bottom:30px;
       animation: fadeUp 1s var(--ease) .2s both;
     }
-    .hero__eyebrow-line { width:36px; height:1px; background:var(--gold-lt); }
+    .hero__eyebrow-line { display:none; }
     .hero__eyebrow-text {
       font-size:10px; font-weight:600; letter-spacing:3px;
       text-transform:uppercase; color:var(--gold-lt);
@@ -889,8 +889,10 @@
   <div class="container">
     <div class="hero__content">
       <div class="hero__eyebrow">
-        <div class="hero__eyebrow-line"></div>
-        <span class="hero__eyebrow-text">Инвестиционное агентство · 13 лет</span>
+        <span class="hero__eyebrow-text">Инвестиционное агентство</span>
+      </div>
+      <div class="hero__eyebrow" style="margin-top:-16px; margin-bottom:24px;">
+        <span class="hero__eyebrow-text" style="color:rgba(255,255,255,0.45);">13 лет на рынке</span>
       </div>
 
       <h1 class="hero__title">
