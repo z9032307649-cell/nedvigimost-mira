@@ -30,6 +30,7 @@
       --gold-lt:    #DDA83A;
       --gold-pale:  #ECC870;
       --gold-bg:    rgba(200,146,42,0.08);
+      --gold-grad:  linear-gradient(135deg, #96600E 0%, #E8B84A 30%, #F5D070 50%, #D4A030 70%, #96600E 100%);
 
       /* Текст */
       --text:       #3D3228;
@@ -42,7 +43,7 @@
       --ease: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
     body {
       background: var(--cream);
       color: var(--text);
@@ -80,6 +81,25 @@
     .reveal-delay-2 { transition-delay:.24s; }
     .reveal-delay-3 { transition-delay:.36s; }
     .reveal-delay-4 { transition-delay:.48s; }
+
+    /* ── Металлический отлив на золотом тексте ── */
+    .section-eyebrow,
+    .nav__logo span,
+    .hero__title em,
+    .about__text h2 em,
+    .section-header h2 em,
+    .contact__info h2 em,
+    .footer__brand-name span,
+    .team__title,
+    .portfolio__tag,
+    .quote-sec blockquote em {
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* Линия декора у eyebrow через отдельный псевдоэлемент — градиент не переопределяем */
+    .section-eyebrow::before { background: var(--gold) !important; }
 
     /* ── Утилиты ── */
     .section-eyebrow {
@@ -225,9 +245,7 @@
     /* декоративный паттерн */
     .hero__bg::after {
       content:''; position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(200,146,42,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,146,42,.04) 1px, transparent 1px);
+      background-image: none;
       background-size: 64px 64px;
     }
     /* золотой градиент справа */
@@ -253,23 +271,24 @@
     }
 
     .hero__title {
-      font-family:var(--ff-serif); font-size:clamp(50px,7.5vw,96px);
-      font-weight:700; line-height:1.02; color:#fff; margin-bottom:8px;
+      font-family:var(--ff-serif); font-size:clamp(32px,7.5vw,96px);
+      font-weight:700; line-height:1.05; color:#fff; margin-bottom:8px;
       animation: fadeUp 1s var(--ease) .35s both;
     }
     .hero__title em { font-style:italic; color:var(--gold-pale); }
 
     .hero__subtitle {
-      font-family:var(--ff-serif); font-size:clamp(28px,4vw,50px);
+      font-family:var(--ff-serif); font-size:clamp(20px,4vw,50px);
       font-weight:400; font-style:italic; color:rgba(255,255,255,.65);
       margin-bottom:34px; line-height:1.2;
       animation: fadeUp 1s var(--ease) .45s both;
     }
 
     .hero__desc {
-      font-size:16px; font-weight:300; color:rgba(255,255,255,.72);
-      max-width:480px; line-height:1.85; margin-bottom:52px;
+      font-size:clamp(14px,3.5vw,16px); font-weight:300; color:rgba(255,255,255,.72);
+      max-width:480px; width:100%; line-height:1.85; margin-bottom:52px;
       animation: fadeUp 1s var(--ease) .55s both;
+      overflow-wrap: break-word; word-break: break-word;
     }
 
     .hero__btns {
@@ -277,38 +296,20 @@
       animation: fadeUp 1s var(--ease) .65s both;
     }
 
-    @keyframes gold-pulse {
-      0%   { box-shadow: 0 0 8px 2px rgba(200,146,42,.45), 0 0 24px 4px rgba(200,146,42,.18); }
-      50%  { box-shadow: 0 0 18px 6px rgba(200,146,42,.65), 0 0 44px 10px rgba(200,146,42,.28); }
-      100% { box-shadow: 0 0 8px 2px rgba(200,146,42,.45), 0 0 24px 4px rgba(200,146,42,.18); }
-    }
     .btn {
       display:inline-flex; align-items:center; gap:10px;
       text-decoration:none; font-size:11px; font-weight:600;
       letter-spacing:2px; text-transform:uppercase;
-      transition:all .35s var(--ease); cursor:pointer;
-      border:none; outline:none; position:relative; overflow:hidden;
+      transition:all .3s var(--ease); cursor:pointer;
+      border:none; outline:none;
     }
-    .btn::after {
-      content:''; position:absolute; inset:0;
-      background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
-      transform:translateX(-100%); transition:transform .55s ease;
-      pointer-events:none;
-    }
-    .btn:hover::after { transform:translateX(100%); }
-
     .btn-gold {
       background:linear-gradient(135deg, #96600E 0%, #E8B84A 40%, #C8922A 70%, #96600E 100%);
-      background-size:200% 100%;
       color:#fff; padding:17px 40px;
-      box-shadow:0 0 10px 2px rgba(200,146,42,.4), 0 0 28px 5px rgba(200,146,42,.15);
-      animation: gold-pulse 2.8s ease-in-out infinite;
     }
     .btn-gold:hover {
       background:linear-gradient(135deg, #A87020 0%, #F0C860 40%, #DDA83A 70%, #A87020 100%);
-      transform:translateY(-3px);
-      box-shadow:0 0 22px 8px rgba(200,146,42,.7), 0 0 55px 14px rgba(200,146,42,.3);
-      animation:none;
+      transform:translateY(-2px);
     }
     .btn-outline-white {
       border:1.5px solid rgba(255,255,255,.4); color:#fff; padding:16px 32px;
@@ -316,13 +317,8 @@
     .btn-outline-white:hover { border-color:#fff; transform:translateY(-2px); }
     .btn-outline-gold {
       border:1.5px solid var(--gold); color:var(--gold); padding:16px 32px;
-      box-shadow:0 0 8px 2px rgba(200,146,42,.2);
-      transition:all .35s var(--ease);
     }
-    .btn-outline-gold:hover {
-      background:var(--gold); color:#fff; transform:translateY(-3px);
-      box-shadow:0 0 20px 6px rgba(200,146,42,.55), 0 0 48px 12px rgba(200,146,42,.25);
-    }
+    .btn-outline-gold:hover { background:var(--gold); color:#fff; transform:translateY(-2px); }
 
     /* Stats полоска */
     .hero__stats {
@@ -346,8 +342,11 @@
       color:rgba(255,255,255,.4); margin-top:6px;
     }
     @media(max-width:768px){
-      .hero__stats { position:relative; flex-wrap:wrap; }
-      .hero__stat { flex:50%; border-bottom:1px solid rgba(255,255,255,.08); }
+      .hero { flex-direction:column; align-items:stretch; justify-content:flex-start; padding-bottom:0; }
+      .hero > .container { flex:1; display:flex; align-items:center; }
+      .hero__stats { position:relative; flex-wrap:wrap; width:100%; flex-shrink:0; }
+      .hero__stat { flex:50%; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 16px; }
+      .hero__stat-num { font-size:28px; }
     }
 
     /* ══════════════════════════════
@@ -356,6 +355,7 @@
     .section { padding:110px 0; }
     .section-light { background:var(--cream); }
     .section-cream { background:var(--cream-deep); }
+    @media(max-width:768px) { .section { padding:56px 0; } }
     .section-dark { background:var(--dark); color:#fff; }
 
     .about__grid {
@@ -385,9 +385,7 @@
     }
     .photo-placeholder::before {
       content:''; position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(200,146,42,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,146,42,.04) 1px, transparent 1px);
+      background-image: none;
       background-size: 40px 40px;
     }
     .photo-placeholder__initials {
@@ -682,9 +680,7 @@
     }
     .team__photo-placeholder::before {
       content:''; position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(200,146,42,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,146,42,.04) 1px, transparent 1px);
+      background-image: none;
       background-size: 40px 40px;
     }
     .team__photo-placeholder__initials {
@@ -811,12 +807,16 @@
     .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     @media(max-width:600px){ .form-row { grid-template-columns:1fr; } }
     .form-submit {
-      width:100%; padding:16px; background:var(--gold); color:#fff;
+      width:100%; padding:16px; color:#fff;
+      background:linear-gradient(135deg, #96600E 0%, #E8B84A 45%, #A87020 100%);
       border:none; font-family:var(--ff-sans); font-size:11px;
       font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
       cursor:pointer; transition:all .3s var(--ease); margin-top:4px;
     }
-    .form-submit:hover { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 8px 28px rgba(200,146,42,.35); }
+    .form-submit:hover {
+      background:linear-gradient(135deg, #A87020 0%, #F0C860 45%, #BF8828 100%);
+      transform:translateY(-2px);
+    }
     .form-note { font-size:11px; color:rgba(255,255,255,.25); text-align:center; margin-top:14px; }
     .form-success { display:none; text-align:center; padding:40px 0; }
     .form-success svg { color:var(--gold-lt); margin-bottom:18px; }
@@ -1195,7 +1195,7 @@
           <div class="portfolio__chips">
             <span class="portfolio__chip">Апартаменты у моря</span>
             <span class="portfolio__chip">Земля под застройку</span>
-            <span class="portfolio__chip">Коммерческая</span>
+            <span class="portfolio__chip">Коммерческие объекты</span>
           </div>
         </div>
         <div class="dir-photo" id="photo-crimea">
@@ -1249,9 +1249,9 @@
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold-lt)" stroke-width="1.25" style="margin-bottom:20px; opacity:.85">
           <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
         </svg>
-        <div class="team__name" style="font-size:20px; color:#fff; margin-bottom:8px;">Закрытые объекты</div>
+        <div class="team__name" style="font-size:20px; color:#fff; margin-bottom:8px;">Закрытые продажи</div>
         <div class="team__title" style="margin-bottom:14px; color:var(--gold-lt);">Вне открытого рынка</div>
-        <p class="team__desc" style="color:rgba(255,255,255,.55);">Часть объектов доступна только нашим клиентам. Прямые связи с собственниками и застройщиками — без посредников.</p>
+        <p class="team__desc" style="color:rgba(255,255,255,.55);">Часть объектов доступна только нашим клиентам. Прямые связи с собственниками и инвесторами — без посредников.</p>
       </div>
 
     </div>
