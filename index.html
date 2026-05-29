@@ -348,17 +348,32 @@
     }
     .about__photo:hover img { transform:scale(1.04); }
 
-    /* Заглушка если нет фото */
+    /* Заглушка фото — элегантная тёмная с инициалами */
     .photo-placeholder {
       width:100%; height:100%;
       display:flex; flex-direction:column; align-items:center;
-      justify-content:center; gap:14px;
-      background:linear-gradient(145deg, var(--cream-dark), var(--cream-deep));
+      justify-content:center; gap:20px;
+      background: linear-gradient(160deg, #1e1a14 0%, #2e2820 60%, #1a1610 100%);
+      position:relative;
     }
-    .photo-placeholder__icon { opacity:.25; }
+    .photo-placeholder::before {
+      content:''; position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(184,137,42,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,137,42,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .photo-placeholder__initials {
+      font-family: var(--ff-serif);
+      font-size: 72px; font-weight: 400; line-height:1;
+      color: var(--gold-lt);
+      opacity: .9;
+      position:relative; z-index:1;
+    }
     .photo-placeholder__label {
-      font-size:11px; letter-spacing:2px; text-transform:uppercase;
-      color:var(--text-light); opacity:.7;
+      font-size:10px; letter-spacing:3px; text-transform:uppercase;
+      color:rgba(255,255,255,.35);
+      position:relative; z-index:1;
     }
 
     /* Декоративная рамка */
@@ -634,13 +649,25 @@
     .team__photo-placeholder {
       width:100%; height:100%;
       display:flex; flex-direction:column; align-items:center;
-      justify-content:center; gap:12px;
-      background:linear-gradient(145deg, var(--cream-dark), var(--cream-deep));
+      justify-content:center; gap:16px;
+      background: linear-gradient(160deg, #1e1a14 0%, #2e2820 60%, #1a1610 100%);
+      position:relative;
     }
-    .team__photo-placeholder svg { opacity:.2; }
-    .team__photo-placeholder span {
-      font-size:10px; letter-spacing:2px; text-transform:uppercase;
-      color:var(--text-light); opacity:.6;
+    .team__photo-placeholder::before {
+      content:''; position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(184,137,42,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,137,42,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .team__photo-placeholder__initials {
+      font-family: var(--ff-serif);
+      font-size: 56px; font-weight: 400; line-height:1;
+      color: var(--gold-lt); position:relative; z-index:1;
+    }
+    .team__photo-placeholder span:not(.team__photo-placeholder__initials) {
+      font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+      color:rgba(255,255,255,.3); position:relative; z-index:1;
     }
 
     /* Золотая метка роли */
@@ -957,10 +984,8 @@
                Пропорции: вертикальное 3:4, мин. 600×800px
                Пример: беж/красный пиджак, уверенная поза -->
           <div class="photo-placeholder">
-            <svg class="photo-placeholder__icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-            <span class="photo-placeholder__label">Фото Виктории Батовской</span>
+            <span class="photo-placeholder__initials">ВБ</span>
+            <span class="photo-placeholder__label">Виктория Батовская</span>
           </div>
         </div>
         <div class="about__badge">
@@ -1214,10 +1239,8 @@
                Вертикальное 3:4, мин. 480×640px
                Можно то же фото что в блоке "О себе" или другое -->
           <div class="team__photo-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-            <span>Фото Виктории</span>
+            <span class="team__photo-placeholder__initials">ВБ</span>
+            <span>Виктория Батовская</span>
           </div>
           <div class="team__role-badge">Основатель и руководитель</div>
         </div>
@@ -1229,19 +1252,23 @@
       </div>
 
       <!-- Партнёры на локациях -->
-      <div class="team__card reveal reveal-delay-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:40px 28px; text-align:center; background:var(--cream-deep);">
-        <div style="font-size:40px; margin-bottom:18px;">🌏</div>
-        <div class="team__name" style="font-size:19px;">Партнёры на локациях</div>
-        <div class="team__title" style="margin-bottom:14px;">Таиланд · Бали · Крым</div>
+      <div class="team__card reveal reveal-delay-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:48px 32px; text-align:center; background:var(--cream-deep); border:1px solid var(--cream-dark);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.25" style="margin-bottom:20px; opacity:.85">
+          <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+        </svg>
+        <div class="team__name" style="font-size:20px; margin-bottom:8px;">Партнёры на локациях</div>
+        <div class="team__title" style="margin-bottom:14px;">Таиланд · Бали · Крым · Россия</div>
         <p class="team__desc">Локальные специалисты, юристы и партнёры застройщиков на каждом рынке. Знают всё изнутри — от документов до управляющих компаний.</p>
       </div>
 
       <!-- Закрытая база -->
-      <div class="team__card reveal reveal-delay-2" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:40px 28px; text-align:center; background:var(--dark);">
-        <div style="font-size:40px; margin-bottom:18px;">🔐</div>
-        <div class="team__name" style="font-size:19px; color:#fff;">Закрытые объекты</div>
+      <div class="team__card reveal reveal-delay-2" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:48px 32px; text-align:center; background:var(--dark);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold-lt)" stroke-width="1.25" style="margin-bottom:20px; opacity:.85">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <div class="team__name" style="font-size:20px; color:#fff; margin-bottom:8px;">Закрытые объекты</div>
         <div class="team__title" style="margin-bottom:14px; color:var(--gold-lt);">Вне открытого рынка</div>
-        <p class="team__desc" style="color:rgba(255,255,255,.6);">Часть объектов доступна только нашим клиентам. Прямые связи с собственниками и застройщиками — без посредников.</p>
+        <p class="team__desc" style="color:rgba(255,255,255,.55);">Часть объектов доступна только нашим клиентам. Прямые связи с собственниками и застройщиками — без посредников.</p>
       </div>
 
     </div>
