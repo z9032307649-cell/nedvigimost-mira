@@ -26,16 +26,16 @@
       --dark-soft:  #4A4038;
 
       /* Золото */
-      --gold:       #B8892A;
-      --gold-lt:    #D4A84B;
-      --gold-pale:  #E8C97A;
-      --gold-bg:    rgba(184,137,42,0.08);
+      --gold:       #D4AF37;
+      --gold-lt:    #E8C84A;
+      --gold-pale:  #F5E08A;
+      --gold-bg:    rgba(212,175,55,0.08);
 
       /* Текст */
       --text:       #3D3228;
       --text-mid:   #6B5D50;
       --text-light: #9C8E82;
-      --border:     rgba(184,137,42,0.2);
+      --border:     rgba(212,175,55,0.2);
 
       --ff-serif: 'Playfair Display', Georgia, serif;
       --ff-sans:  'Inter', sans-serif;
@@ -226,14 +226,14 @@
     .hero__bg::after {
       content:''; position:absolute; inset:0;
       background-image:
-        linear-gradient(rgba(184,137,42,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(184,137,42,.04) 1px, transparent 1px);
+        linear-gradient(rgba(212,175,55,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,.04) 1px, transparent 1px);
       background-size: 64px 64px;
     }
     /* золотой градиент справа */
     .hero__glow {
       position:absolute; right:0; top:0; bottom:0; width:50%;
-      background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(184,137,42,.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(212,175,55,.08) 0%, transparent 70%);
       pointer-events:none;
     }
 
@@ -287,7 +287,7 @@
     .btn-gold {
       background:var(--gold); color:#fff; padding:17px 40px;
     }
-    .btn-gold:hover { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 10px 36px rgba(184,137,42,.35); }
+    .btn-gold:hover { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 10px 36px rgba(212,175,55,.35); }
     .btn-outline-white {
       border:1.5px solid rgba(255,255,255,.4); color:#fff; padding:16px 32px;
     }
@@ -359,8 +359,8 @@
     .photo-placeholder::before {
       content:''; position:absolute; inset:0;
       background-image:
-        linear-gradient(rgba(184,137,42,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(184,137,42,.04) 1px, transparent 1px);
+        linear-gradient(rgba(212,175,55,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,.04) 1px, transparent 1px);
       background-size: 40px 40px;
     }
     .photo-placeholder__initials {
@@ -430,7 +430,7 @@
       content:'"'; position:absolute; top:-60px; left:50%;
       transform:translateX(-50%);
       font-family:var(--ff-serif); font-size:360px; font-weight:700;
-      color:rgba(184,137,42,.05); line-height:1; pointer-events:none;
+      color:rgba(212,175,55,.05); line-height:1; pointer-events:none;
     }
     .quote-sec blockquote {
       font-family:var(--ff-serif); font-size:clamp(22px,3.2vw,40px);
@@ -513,7 +513,7 @@
       margin-bottom:22px;
       transition: background .3s;
     }
-    .goals__item:hover .goals__icon { background:rgba(184,137,42,.16); }
+    .goals__item:hover .goals__icon { background:rgba(212,175,55,.16); }
     .goals__icon svg { color:var(--gold); }
     .goals__item h3 {
       font-family:var(--ff-serif); font-size:22px; font-weight:600;
@@ -656,8 +656,8 @@
     .team__photo-placeholder::before {
       content:''; position:absolute; inset:0;
       background-image:
-        linear-gradient(rgba(184,137,42,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(184,137,42,.04) 1px, transparent 1px);
+        linear-gradient(rgba(212,175,55,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,.04) 1px, transparent 1px);
       background-size: 40px 40px;
     }
     .team__photo-placeholder__initials {
@@ -789,7 +789,7 @@
       font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
       cursor:pointer; transition:all .3s var(--ease); margin-top:4px;
     }
-    .form-submit:hover { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 8px 28px rgba(184,137,42,.35); }
+    .form-submit:hover { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 8px 28px rgba(212,175,55,.35); }
     .form-note { font-size:11px; color:rgba(255,255,255,.25); text-align:center; margin-top:14px; }
     .form-success { display:none; text-align:center; padding:40px 0; }
     .form-success svg { color:var(--gold-lt); margin-bottom:18px; }
